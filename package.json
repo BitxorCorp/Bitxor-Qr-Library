@@ -1,0 +1,75 @@
+{
+  "name": "bitxor-qr-library",
+  "version": "1.0.2",
+  "description": "Bitxor library to handle QR Codes",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "braces": ">=2.3.1",
+    "canvas": "^2.6.1",
+    "crypto-js": "^3.3.0",
+    "open": "^7.0.2",
+    "qrcode": "^1.4.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.28",
+    "@types/qrcode": "^1.3.4",
+    "async": "^3.1.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "browserify": "^16.5.0",
+    "bufferutil": "4.0.1",
+    "chai": "^4.1.2",
+    "copyfiles": "^2.2.0",
+    "coveralls": "^3.0.9",
+    "mocha": "^8.2.1",
+    "nyc": "^15.0.1",
+    "rxjs": "^6.5.4",
+    "bitxor-hd-wallets": "git+https://gitlab.microsula.net/customers/bitxor/library/bitxor-hd-wallets.git#main",
+    "bitxor-sdk": "git+https://gitlab.microsula.net/opensource/bitxor/Bitxor-SDK-JavaScript.git#main",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^7.0.0",
+    "tslint": "^6.0.0",
+    "typedoc": "^0.15.0",
+    "typemoq": "^2.1.0",
+    "typescript": "^3.8.3",
+    "uglifyify": "^5.0.2",
+    "utf-8-validate": "^5.0.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "pretest": "npm run build",
+    "build": "rm -rf dist/ && tsc",
+    "build:browser": "npm run build && webpack",
+    "lint:all": "tslint --project .",
+    "test": "mocha --ui bdd --recursive ./dist/test",
+    "test:cov": "nyc --reporter=lcov --reporter=text-summary npm t",
+    "test:coveralls": "npm run test:cov | coveralls",
+    "coveralls-report": "cat ./coverage/lcov.info | coveralls",
+    "version": "echo $npm_package_version",
+    "doc": "typedoc --out \"ts-docs/$(npm run version --silent)\" src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://gitlab.local.bitxor.org/bitxor-nodejs-sdk/bitxor-qr-library.git"
+  },
+  "author": "Grégory Saive from Using Blockchain Ltd <greg@ubc.digital>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "http://gitlab.local.bitxor.org/bitxor-nodejs-sdk/bitxor-qr-library/issues"
+  },
+  "homepage": "http://gitlab.local.bitxor.org/bitxor-nodejs-sdk/bitxor-qr-library#readme",
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ]
+  }
+}
